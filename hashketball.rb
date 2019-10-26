@@ -235,7 +235,7 @@ end
 
 def winning_team
   total_points = 0
-  win_team = ''
+  winners = ''
   game_hash.each do |home_away, keys|
     team_points = 0
     team_name = game_hash[home_away][:team_name]
@@ -243,21 +243,21 @@ def winning_team
       points = player[:points]
       team_points += points
     end
-    win_team, total_points = team_name, team_points if team_points > total_points
+    winners, total_points = team_name, team_points if team_points > total_points
   end
-  return win_team
+  return winners
 end
 
 def player_with_longest_name
-  longest = ''
+  longest_name = ''
   longest_length = 0
   game_hash.each do |home_away, keys|
     keys[:players].each do |player|
       name_length = player[:player_name].length
-      longest, longest_length = player[:player_name], name_length if name_length > longest_length
+      longest_name, longest_length = player[:player_name], name_length if name_length > longest_length
     end
   end
-  return longest
+  return longest_name
 end
 
 
