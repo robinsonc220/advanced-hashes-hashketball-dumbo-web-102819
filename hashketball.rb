@@ -1,3 +1,5 @@
+require 'pry'
+
 def game_hash
 hash = {
   :home => {
@@ -60,7 +62,7 @@ hash = {
            :slam_dunks => "1"
          }
          ]
-  }
+  },
   :away => {
     :team_name => "Charlotte Hornets",
     :colors => ["Turquoise", "Purple"],
@@ -124,4 +126,40 @@ hash = {
   }
 }
 hash
+end
+
+def num_points_scored(players_name)
+  game_hash.each do |place, team|
+    team.each do |attribute, data|
+      if attribute == :players
+        data.each do |player|
+          if player[:player_name] == players_name
+            return player[:points]
+          end
+        end
+      end
+    end
+  end
+end
+
+def shoe_size(players_name)
+  game_hash.each do |place, team|
+    team.each do |attribute, data|
+      if attribute == :players
+        data.each do |player|
+          if player[:player_name] == players_name
+            return player[:shoe]
+          end
+        end
+      end
+    end
+  end
+end
+
+def team_colors(players_name)
+  game_hash.each do |place, team|
+    if team[:team_name] == team_name
+      return team[:colors]
+    end
+  end
 end
