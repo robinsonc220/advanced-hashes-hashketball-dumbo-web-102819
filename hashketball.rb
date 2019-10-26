@@ -170,10 +170,17 @@ def team_names
   end
 end
 
-def team_names
-  new_arr = []
+def player_numbers(team_name)
+  nums = []
   game_hash.each do |place, team|
-    new_arr << team[:team_name]
+    if team[:team_name] == team_name
+      team.each do |attributes, data|
+        if attributes == :players
+          data.each do |player|
+            nums << player[:number]
+          end
+        end
+      end
+    end
   end
-  new_arr
 end
