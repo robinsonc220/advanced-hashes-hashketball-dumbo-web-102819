@@ -220,7 +220,7 @@ end
 
 def most_points_scored
   most_points = 0
-  mvp = ''
+  leading_scorer = ''
   game_hash.each do |home_away, keys|
     keys[:players].each do |player|
       points = player[:points]
